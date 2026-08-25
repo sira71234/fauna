@@ -1,0 +1,393 @@
+/* ===== Fauna — Style CSS ===== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2d6a4f;
+    --primary-dark: #1b4332;
+    --primary-light: #40916c;
+    --accent: #d4a373;
+    --accent-light: #e9c46a;
+    --bg: #f5f0e8;
+    --bg-card: #ffffff;
+    --text: #212529;
+    --text-light: #6c757d;
+    --border: #dee2e6;
+    --success: #2d6a4f;
+    --error: #c1121f;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Nav --- */
+nav {
+    background: var(--primary-dark);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 6px 6px 0 0;
+    white-space: nowrap;
+}
+
+nav a:first-child {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 1rem;
+}
+
+nav a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Main --- */
+main {
+    flex: 1;
+    max-width: 800px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.75rem;
+}
+
+/* --- Score --- */
+.score {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+/* --- Buttons (quiz answers) --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+button[type="submit"]:hover {
+    border-color: var(--primary-light);
+    background: #e8f5e9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* --- Resultat --- */
+.resultat-Ok, .resultat-Err {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* --- Lien question suivante --- */
+a[href] {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a[href]:hover {
+    text-decoration: underline;
+}
+
+/* --- Image quiz --- */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+/* --- Accueil — Modes grid --- */
+.modes-jeu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modes-jeu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+}
+
+.modes-jeu a:hover {
+    border-color: var(--primary-light);
+    background: #e8f5e9;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* --- Mode Image Inverse — grid de photos --- */
+.choix-images form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.choix-image-btn {
+    background: var(--bg-card) !important;
+    border: 3px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 0.5rem !important;
+    cursor: pointer;
+    transition: all 0.25s !important;
+    overflow: hidden;
+}
+
+.choix-image-btn img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.choix-image-btn:hover {
+    border-color: var(--primary) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* --- Mode Cri — audio --- */
+.audio-container {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.audio-container audio {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* --- Leçon du jour --- */
+.lecon {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-top: 1rem;
+}
+
+.lecon h2 {
+    color: var(--primary-dark);
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+}
+
+.lecon-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+}
+
+.lecon table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.lecon table td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+.lecon table td:first-child {
+    width: 180px;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.lecon .anecdote,
+.lecon .contenu-supplementaire {
+    background: #f0f7f0;
+    border-left: 4px solid var(--primary-light);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-top: 1.25rem;
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--primary-dark);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+/* --- Erreur --- */
+.erreur {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 1rem;
+    border-radius: var(--radius);
+    color: #856404;
+    font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    nav {
+        padding: 0 0.75rem;
+    }
+
+    nav a {
+        padding: 0.6rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    nav a:first-child {
+        font-size: 1rem;
+    }
+
+    main {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .modes-jeu {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .modes-jeu a {
+        padding: 1rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .choix-images form {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .choix-image-btn img {
+        height: 130px;
+    }
+
+    .lecon {
+        padding: 1.25rem;
+    }
+
+    .lecon table td:first-child {
+        width: 120px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modes-jeu {
+        grid-template-columns: 1fr;
+    }
+
+    .choix-images form {
+        grid-template-columns: 1fr;
+    }
+}

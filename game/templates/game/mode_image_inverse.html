@@ -1,0 +1,32 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Fauna — Mode Image Inverse{% endblock %}
+
+{% block content %}
+    <h1>🖼️ Mode Image Inverse</h1>
+
+    {% if erreur %}
+        <p>{{ erreur }}</p>
+    {% else %}
+        <h2>{{ question }}</h2>
+
+        <p class="score">Score : {{ score }}</p>
+
+        <div class="choix-images">
+            <form method="POST">
+                {% csrf_token %}
+                {% for c in choix_images %}
+                    <button type="submit" name="reponse" value="{{ c.nom }}" class="choix-image-btn">
+                        <img src="{{ c.image_url }}" alt="{{ c.nom }}">
+                    </button>
+                {% endfor %}
+                <input type="hidden" name="bonne_reponse" value="{{ bonne_reponse }}">
+            </form>
+        </div>
+
+        {% if resultat %}
+            <p>{{ resultat }}</p>
+            <a href="{% url 'mode_image_inverse' %}">Question suivante</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

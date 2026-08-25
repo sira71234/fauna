@@ -1,0 +1,17 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Fauna — Accueil{% endblock %}
+
+{% block content %}
+    <h1>🐾 Bienvenue sur Fauna</h1>
+    <p>Choisis un mode de jeu pour commencer :</p>
+
+    <div class="modes-jeu">
+        <a href="{% url 'mode_image' %}">🖼️ Mode Image</a>
+        <a href="{% url 'mode_image_inverse' %}">🖼️ Mode Image Inverse</a>
+        <a href="{% url 'culture_g' %}">📚 Mode Culture Générale</a>
+        <a href="{% url 'mode_cri' %}">🔊 Mode Cri</a>
+        <a href="{% url 'fmp' %}">♂️ Mode Femelle / Mâle / Petit</a>
+        <a href="{% url 'lecon_du_jour' %}">🌿 Leçon du jour</a>
+    </div>
+{% endblock %}

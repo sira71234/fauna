@@ -1,0 +1,34 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Fauna — Mode Cri{% endblock %}
+
+{% block content %}
+    <h1>🔊 Mode Cri</h1>
+
+    {% if erreur %}
+        <p>{{ erreur }}</p>
+    {% else %}
+        <h2>{{ question }}</h2>
+
+        <p class="score">Score : {{ score }}</p>
+
+        <div class="audio-container">
+            <audio controls src="{{ animal.cri.url }}">
+                Votre navigateur ne supporte pas la lecture audio.
+            </audio>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            {% for c in choix %}
+                <button type="submit" name="reponse" value="{{ c }}">{{ c }}</button>
+            {% endfor %}
+            <input type="hidden" name="bonne_reponse" value="{{ bonne_reponse }}">
+        </form>
+
+        {% if resultat %}
+            <p>{{ resultat }}</p>
+            <a href="{% url 'mode_cri' %}">Question suivante</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

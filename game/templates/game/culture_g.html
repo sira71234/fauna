@@ -1,0 +1,28 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Fauna — Culture Générale{% endblock %}
+
+{% block content %}
+    <h1>📚 Mode Culture Générale</h1>
+
+    {% if erreur %}
+        <p>{{ erreur }}</p>
+    {% else %}
+        <h2>{{ question }}</h2>
+
+        <p class="score">Score : {{ score }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            {% for c in choix %}
+                <button type="submit" name="reponse" value="{{ c }}">{{ c }}</button>
+            {% endfor %}
+            <input type="hidden" name="bonne_reponse" value="{{ bonne_reponse }}">
+        </form>
+
+        {% if resultat %}
+            <p>{{ resultat }}</p>
+            <a href="{% url 'culture_g' %}">Question suivante</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

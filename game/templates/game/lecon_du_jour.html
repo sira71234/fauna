@@ -1,0 +1,83 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Fauna — Leçon du jour{% endblock %}
+
+{% block content %}
+    <h1>🌿 Leçon du jour</h1>
+    <p>{{ date|date:"l d F Y" }}</p>
+
+    {% if aucune_lecon %}
+        <p>Aucune leçon programmée pour aujourd'hui.</p>
+    {% else %}
+        <div class="lecon">
+            <h2>{{ animal.nom }}</h2>
+
+            {% if animal.image %}
+                <img src="{{ animal.image.url }}" alt="{{ animal.nom }}" class="lecon-image">
+            {% endif %}
+
+            {% if animal.nom_scientifique %}
+                <p><strong>Nom scientifique :</strong> <em>{{ animal.nom_scientifique }}</em></p>
+            {% endif %}
+
+            <table>
+                {% if animal.famille %}
+                    <tr><td><strong>Famille</strong></td><td>{{ animal.famille }}{% if animal.famille_nom_commun %} ({{ animal.famille_nom_commun }}){% endif %}</td></tr>
+                {% endif %}
+                {% if animal.ordre %}
+                    <tr><td><strong>Ordre</strong></td><td>{{ animal.ordre }}</td></tr>
+                {% endif %}
+                {% if animal.categorie %}
+                    <tr><td><strong>Catégorie</strong></td><td>{{ animal.categorie }}</td></tr>
+                {% endif %}
+                {% if animal.habitat %}
+                    <tr><td><strong>Habitat</strong></td><td>{{ animal.habitat }}</td></tr>
+                {% endif %}
+                {% if animal.continent %}
+                    <tr><td><strong>Continent</strong></td><td>{{ animal.continent }}</td></tr>
+                {% endif %}
+                {% if animal.regime_alimentaire %}
+                    <tr><td><strong>Régime alimentaire</strong></td><td>{{ animal.regime_alimentaire }}</td></tr>
+                {% endif %}
+                {% if animal.nom_femelle %}
+                    <tr><td><strong>Femelle</strong></td><td>{{ animal.nom_femelle }}</td></tr>
+                {% endif %}
+                {% if animal.nom_male %}
+                    <tr><td><strong>Mâle</strong></td><td>{{ animal.nom_male }}</td></tr>
+                {% endif %}
+                {% if animal.nom_petit %}
+                    <tr><td><strong>Petit</strong></td><td>{{ animal.nom_petit }}</td></tr>
+                {% endif %}
+                {% if animal.nom_groupe %}
+                    <tr><td><strong>Groupe</strong></td><td>{{ animal.nom_groupe }}</td></tr>
+                {% endif %}
+                {% if animal.nom_cri %}
+                    <tr><td><strong>Cri</strong></td><td>{{ animal.nom_cri }}</td></tr>
+                {% endif %}
+            </table>
+
+            {% if animal.cri %}
+                <div class="audio-container">
+                    <p><strong>Écouter le cri :</strong></p>
+                    <audio controls src="{{ animal.cri.url }}">
+                        Votre navigateur ne supporte pas la lecture audio.
+                    </audio>
+                </div>
+            {% endif %}
+
+            {% if animal.anecdote %}
+                <div class="anecdote">
+                    <h3>Anecdote</h3>
+                    <p>{{ animal.anecdote }}</p>
+                </div>
+            {% endif %}
+
+            {% if lecon.contenu_supplementaire %}
+                <div class="contenu-supplementaire">
+                    <h3>En savoir plus</h3>
+                    <p>{{ lecon.contenu_supplementaire }}</p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

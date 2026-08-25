@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fauna{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'game/css/style.css' %}">
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'accueil' %}">🐾 Fauna</a>
+        <a href="{% url 'mode_image' %}">Mode Image</a>
+        <a href="{% url 'mode_image_inverse' %}">Mode Image Inverse</a>
+        <a href="{% url 'culture_g' %}">Mode Culture G</a>
+        <a href="{% url 'mode_cri' %}">Mode Cri</a>
+        <a href="{% url 'fmp' %}">Femelle / Mâle / Petit</a>
+        <a href="{% url 'lecon_du_jour' %}">Leçon du jour</a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Fauna — Le quiz des animaux</p>
+    </footer>
+
+</body>
+</html>
